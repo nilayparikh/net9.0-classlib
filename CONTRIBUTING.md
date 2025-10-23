@@ -4,14 +4,14 @@ Thank you for your interest in contributing to this project! We welcome contribu
 
 ## Table of Contents
 
-- [Code of Conduct](#code-of-conduct)
-- [Getting Started](#getting-started)
-- [Development Setup](#development-setup)
-- [How to Contribute](#how-to-contribute)
-- [Coding Standards](#coding-standards)
-- [Testing Guidelines](#testing-guidelines)
-- [Pull Request Process](#pull-request-process)
-- [Reporting Issues](#reporting-issues)
+-   [Code of Conduct](#code-of-conduct)
+-   [Getting Started](#getting-started)
+-   [Development Setup](#development-setup)
+-   [How to Contribute](#how-to-contribute)
+-   [Coding Standards](#coding-standards)
+-   [Testing Guidelines](#testing-guidelines)
+-   [Pull Request Process](#pull-request-process)
+-   [Reporting Issues](#reporting-issues)
 
 ## Code of Conduct
 
@@ -19,67 +19,71 @@ This project adheres to a code of conduct. By participating, you are expected to
 
 ### Our Standards
 
-- Use welcoming and inclusive language
-- Be respectful of differing viewpoints and experiences
-- Gracefully accept constructive criticism
-- Focus on what is best for the community
-- Show empathy towards other community members
+-   Use welcoming and inclusive language
+-   Be respectful of differing viewpoints and experiences
+-   Gracefully accept constructive criticism
+-   Focus on what is best for the community
+-   Show empathy towards other community members
 
 ## Getting Started
 
 1. **Fork the repository** on GitHub
 2. **Clone your fork** locally:
-   ```bash
-   git clone https://github.com/yourusername/yourrepository.git
-   cd yourrepository
-   ```
+    ```bash
+    git clone https://github.com/yourusername/yourrepository.git
+    cd yourrepository
+    ```
 3. **Add upstream remote**:
-   ```bash
-   git remote add upstream https://github.com/originalowner/originalrepository.git
-   ```
+    ```bash
+    git remote add upstream https://github.com/originalowner/originalrepository.git
+    ```
 4. **Create a feature branch**:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
+    ```bash
+    git checkout -b feature/your-feature-name
+    ```
 
 ## Development Setup
 
 ### Prerequisites
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
-- [Visual Studio Code](https://code.visualstudio.com/) or Visual Studio 2022+
-- [Node.js](https://nodejs.org/) (for MCP servers)
-- [Git](https://git-scm.com/)
+-   [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+-   [Visual Studio Code](https://code.visualstudio.com/) or Visual Studio 2022+
+-   [Node.js](https://nodejs.org/) (for MCP servers)
+-   [Git](https://git-scm.com/)
 
 ### Initial Setup
 
 1. **Restore dependencies**:
-   ```bash
-   dotnet restore
-   ```
+
+    ```bash
+    dotnet restore
+    ```
 
 2. **Build the solution**:
-   ```bash
-   dotnet build
-   ```
+
+    ```bash
+    dotnet build
+    ```
 
 3. **Run tests**:
-   ```bash
-   dotnet test
-   ```
+
+    ```bash
+    dotnet test
+    ```
 
 4. **Install MCP servers** (optional, for AI assistance):
-   ```powershell
-   .\scripts\install-mcps.ps1
-   ```
+    ```powershell
+    .\scripts\install-mcps.ps1
+    ```
 
 ### VS Code Extensions
 
 Install the recommended extensions when prompted, or manually install:
-- C# Dev Kit
-- GitHub Copilot (optional)
-- EditorConfig for VS Code
-- Markdown Lint
+
+-   C# Dev Kit
+-   GitHub Copilot (optional)
+-   EditorConfig for VS Code
+-   Markdown Lint
 
 ## How to Contribute
 
@@ -87,12 +91,12 @@ Install the recommended extensions when prompted, or manually install:
 
 We welcome various types of contributions:
 
-- **Bug fixes**: Fix existing issues
-- **New features**: Add new functionality
-- **Documentation**: Improve or add documentation
-- **Tests**: Add or improve test coverage
-- **Performance**: Optimize existing code
-- **Refactoring**: Improve code quality without changing behavior
+-   **Bug fixes**: Fix existing issues
+-   **New features**: Add new functionality
+-   **Documentation**: Improve or add documentation
+-   **Tests**: Add or improve test coverage
+-   **Performance**: Optimize existing code
+-   **Refactoring**: Improve code quality without changing behavior
 
 ### Contribution Workflow
 
@@ -109,23 +113,23 @@ All code must follow the standards defined in `.github/instructions/cs.instructi
 
 ### Naming Conventions
 
-- **PascalCase**: Classes, methods, properties, public members
-- **camelCase**: Local variables, parameters
-- **_camelCase**: Private fields (with underscore prefix)
+-   **PascalCase**: Classes, methods, properties, public members
+-   **camelCase**: Local variables, parameters
+-   **\_camelCase**: Private fields (with underscore prefix)
 
 ### Code Style
 
-- Use file-scoped namespaces
-- Enable nullable reference types
-- Use modern C# features (C# 12)
-- Follow SOLID principles
-- One type per file
+-   Use file-scoped namespaces
+-   Enable nullable reference types
+-   Use modern C# features (C# 12)
+-   Follow SOLID principles
+-   One type per file
 
 ### Documentation
 
-- Add XML comments for all public APIs
-- Include `<summary>`, `<param>`, `<returns>`, `<exception>` tags
-- Provide usage examples for complex APIs
+-   Add XML comments for all public APIs
+-   Include `<summary>`, `<param>`, `<returns>`, `<exception>` tags
+-   Provide usage examples for complex APIs
 
 ### Example
 
@@ -138,7 +142,7 @@ namespace YourLibrary.Services;
 public class CustomerService
 {
     private readonly ICustomerRepository _repository;
-    
+
     /// <summary>
     /// Initializes a new instance of the <see cref="CustomerService"/> class.
     /// </summary>
@@ -151,7 +155,7 @@ public class CustomerService
         ArgumentNullException.ThrowIfNull(repository);
         _repository = repository;
     }
-    
+
     /// <summary>
     /// Gets a customer by their unique identifier.
     /// </summary>
@@ -169,15 +173,16 @@ public class CustomerService
 
 ### Test Organization
 
-- **Unit tests**: `tests/YourLibrary.Tests/UnitTests/`
-  - No external dependencies
-  - Fast and isolated
-  - Use mocking for dependencies
+-   **Unit tests**: `tests/YourLibrary.Tests/UnitTests/`
 
-- **Integration tests**: `tests/YourLibrary.Tests/IntegrationTests/`
-  - Test component interactions
-  - May use real dependencies
-  - Validate end-to-end scenarios
+    -   No external dependencies
+    -   Fast and isolated
+    -   Use mocking for dependencies
+
+-   **Integration tests**: `tests/YourLibrary.Tests/IntegrationTests/`
+    -   Test component interactions
+    -   May use real dependencies
+    -   Validate end-to-end scenarios
 
 ### Test Structure
 
@@ -190,10 +195,10 @@ public void MethodName_Scenario_ExpectedResult()
     // Arrange
     var sut = new SystemUnderTest();
     var input = "test";
-    
+
     // Act
     var result = sut.Method(input);
-    
+
     // Assert
     result.Should().Be("expected");
 }
@@ -201,11 +206,11 @@ public void MethodName_Scenario_ExpectedResult()
 
 ### Test Requirements
 
-- All new public methods must have tests
-- Aim for >80% code coverage for new code
-- Use descriptive test names
-- Use FluentAssertions for readable assertions
-- Tests should be fast and deterministic
+-   All new public methods must have tests
+-   Aim for >80% code coverage for new code
+-   Use descriptive test names
+-   Use FluentAssertions for readable assertions
+-   Tests should be fast and deterministic
 
 ### Running Tests
 
@@ -225,20 +230,23 @@ dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 ### Before Submitting
 
 1. **Update your branch** with latest upstream changes:
-   ```bash
-   git fetch upstream
-   git rebase upstream/main
-   ```
+
+    ```bash
+    git fetch upstream
+    git rebase upstream/main
+    ```
 
 2. **Ensure all tests pass**:
-   ```bash
-   dotnet test
-   ```
+
+    ```bash
+    dotnet test
+    ```
 
 3. **Check code compiles** without warnings:
-   ```bash
-   dotnet build
-   ```
+
+    ```bash
+    dotnet build
+    ```
 
 4. **Run code analysis** (if available)
 
@@ -246,38 +254,41 @@ dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
 
 ### PR Guidelines
 
-- **Title**: Use a clear, descriptive title
-  - `feat: Add customer search functionality`
-  - `fix: Resolve null reference in OrderService`
-  - `docs: Update API documentation for CustomerService`
-  - `test: Add unit tests for PaymentProcessor`
+-   **Title**: Use a clear, descriptive title
 
-- **Description**: Include:
-  - What changes were made
-  - Why the changes were necessary
-  - Any breaking changes
-  - Related issue numbers (e.g., "Fixes #123")
+    -   `feat: Add customer search functionality`
+    -   `fix: Resolve null reference in OrderService`
+    -   `docs: Update API documentation for CustomerService`
+    -   `test: Add unit tests for PaymentProcessor`
 
-- **Size**: Keep PRs focused and reasonably sized
-  - Prefer smaller, focused PRs over large ones
-  - If making large changes, break into multiple PRs
+-   **Description**: Include:
 
-- **Commits**: 
-  - Use clear, descriptive commit messages
-  - Squash commits if requested by reviewers
+    -   What changes were made
+    -   Why the changes were necessary
+    -   Any breaking changes
+    -   Related issue numbers (e.g., "Fixes #123")
+
+-   **Size**: Keep PRs focused and reasonably sized
+
+    -   Prefer smaller, focused PRs over large ones
+    -   If making large changes, break into multiple PRs
+
+-   **Commits**:
+    -   Use clear, descriptive commit messages
+    -   Squash commits if requested by reviewers
 
 ### PR Checklist
 
 Before submitting, ensure:
 
-- [ ] Code follows project coding standards
-- [ ] All tests pass
-- [ ] New code has appropriate test coverage
-- [ ] XML documentation is complete for public APIs
-- [ ] No new compiler warnings introduced
-- [ ] README and documentation updated if needed
-- [ ] Breaking changes are documented
-- [ ] Commits have clear messages
+-   [ ] Code follows project coding standards
+-   [ ] All tests pass
+-   [ ] New code has appropriate test coverage
+-   [ ] XML documentation is complete for public APIs
+-   [ ] No new compiler warnings introduced
+-   [ ] README and documentation updated if needed
+-   [ ] Breaking changes are documented
+-   [ ] Commits have clear messages
 
 ### Review Process
 
@@ -292,31 +303,31 @@ Before submitting, ensure:
 
 When reporting bugs, include:
 
-- **Description**: Clear description of the issue
-- **Steps to reproduce**: Detailed steps to reproduce the problem
-- **Expected behavior**: What you expected to happen
-- **Actual behavior**: What actually happened
-- **Environment**: OS, .NET version, etc.
-- **Code sample**: Minimal reproducible example if possible
+-   **Description**: Clear description of the issue
+-   **Steps to reproduce**: Detailed steps to reproduce the problem
+-   **Expected behavior**: What you expected to happen
+-   **Actual behavior**: What actually happened
+-   **Environment**: OS, .NET version, etc.
+-   **Code sample**: Minimal reproducible example if possible
 
 ### Feature Requests
 
 When requesting features, include:
 
-- **Use case**: Why is this feature needed?
-- **Proposed solution**: How should it work?
-- **Alternatives**: Any alternative solutions considered?
-- **Additional context**: Any other relevant information
+-   **Use case**: Why is this feature needed?
+-   **Proposed solution**: How should it work?
+-   **Alternatives**: Any alternative solutions considered?
+-   **Additional context**: Any other relevant information
 
 ### Issue Labels
 
 We use labels to organize issues:
 
-- `bug`: Something isn't working
-- `enhancement`: New feature or request
-- `documentation`: Documentation improvements
-- `good first issue`: Good for newcomers
-- `help wanted`: Extra attention needed
+-   `bug`: Something isn't working
+-   `enhancement`: New feature or request
+-   `documentation`: Documentation improvements
+-   `good first issue`: Good for newcomers
+-   `help wanted`: Extra attention needed
 
 ## Development Tips
 
@@ -348,9 +359,9 @@ dotnet build /p:RunAnalyzers=true /p:TreatWarningsAsErrors=true
 
 This project includes MCP servers for AI-assisted development:
 
-- Use GitHub Copilot for code suggestions
-- Refer to `.github/instructions/` for AI guidelines
-- Ensure AI-generated code is reviewed and tested
+-   Use GitHub Copilot for code suggestions
+-   Refer to `.github/instructions/` for AI guidelines
+-   Ensure AI-generated code is reviewed and tested
 
 ## Questions?
 
@@ -368,3 +379,4 @@ By contributing, you agree that your contributions will be licensed under the sa
 ---
 
 Thank you for contributing! 🎉
+

@@ -6,12 +6,12 @@ This folder contains design documentation for significant architectural decision
 
 Document important design decisions, including:
 
-- Architecture patterns and rationale
-- Complex algorithms and data structures
-- Integration approaches
-- Performance optimizations
-- Security considerations
-- Breaking changes and migration strategies
+-   Architecture patterns and rationale
+-   Complex algorithms and data structures
+-   Integration approaches
+-   Performance optimizations
+-   Security considerations
+-   Breaking changes and migration strategies
 
 ## Format
 
@@ -29,18 +29,24 @@ Each design document should include:
 # Design: Feature Name
 
 ## Context
+
 Describe the problem or need...
 
 ## Decision
+
 Explain what was decided...
 
 ## Rationale
+
 Why this approach...
 
 ## Consequences
+
 What this means for the project...
 
 ## Alternatives Considered
-- Option 1: ...
-- Option 2: ...
+
+-   Option 1: ...
+-   Option 2: ...
 ```
+
