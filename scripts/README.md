@@ -7,6 +7,7 @@ This template includes two PowerShell scripts to automate common tasks.
 **Purpose**: Automatically rename the entire template from "YourLibrary" to your custom library name.
 
 **Usage**:
+
 ```powershell
 # Basic usage - renames everything and builds/tests
 .\scripts\rename-template.ps1 -NewName "MyAwesome.Library"
@@ -22,6 +23,7 @@ This template includes two PowerShell scripts to automate common tasks.
 ```
 
 **What it does** (18 steps):
+
 1. Validates your library name is a valid C# identifier
 2. Checks template state
 3. Renames `src\YourLibrary` → `src\YourName`
@@ -42,11 +44,13 @@ This template includes two PowerShell scripts to automate common tasks.
 18. Initializes git repository with initial commit (unless `-SkipGit`)
 
 **Parameters**:
-- `-NewName` (required): Your library name (e.g., "MyCompany.DataAccess")
-- `-SkipBuild` (optional): Skip building and testing
-- `-SkipGit` (optional): Skip git initialization
+
+-   `-NewName` (required): Your library name (e.g., "MyCompany.DataAccess")
+-   `-SkipBuild` (optional): Skip building and testing
+-   `-SkipGit` (optional): Skip git initialization
 
 **Example Output**:
+
 ```
 === .NET 9 Class Library Template Renamer ===
 
@@ -83,6 +87,7 @@ Next steps:
 **Purpose**: Install MCP (Model Context Protocol) servers for AI-assisted development in VS Code.
 
 **Usage**:
+
 ```powershell
 # Install all MCP servers from mcp.json
 .\scripts\install-mcps.ps1
@@ -95,29 +100,34 @@ Next steps:
 ```
 
 **What it does**:
+
 1. Checks prerequisites (Node.js, npx)
 2. Reads `mcp.json` configuration
 3. For each MCP server:
-   - Checks if already installed
-   - Installs using `npx` if needed
+    - Checks if already installed
+    - Installs using `npx` if needed
 4. Displays summary of installed/skipped servers
 
 **Parameters**:
-- `-VerifyOnly` (optional): Only check installation status, don't install
-- `-Force` (optional): Force reinstall even if already installed
+
+-   `-VerifyOnly` (optional): Only check installation status, don't install
+-   `-Force` (optional): Force reinstall even if already installed
 
 **MCP Servers Included**:
-- **Context7**: Library documentation lookup
-- **Memory**: Context retention across sessions
-- **Microsoft Docs**: Search official Microsoft documentation
-- **Sequential Thinking**: Problem-solving assistance
-- **Playwright**: Browser automation
+
+-   **Context7**: Library documentation lookup
+-   **Memory**: Context retention across sessions
+-   **Microsoft Docs**: Search official Microsoft documentation
+-   **Sequential Thinking**: Problem-solving assistance
+-   **Playwright**: Browser automation
 
 **Prerequisites**:
-- Node.js (v18 or higher recommended)
-- npm/npx (comes with Node.js)
+
+-   Node.js (v18 or higher recommended)
+-   npm/npx (comes with Node.js)
 
 **Example Output**:
+
 ```
 === MCP Server Installer ===
 
@@ -187,26 +197,30 @@ Before making changes, you can verify the current state:
 ### Valid Library Names
 
 Your library name must:
-- Start with a letter or underscore
-- Contain only letters, numbers, dots (`.`), and underscores (`_`)
-- Be a valid C# namespace identifier
+
+-   Start with a letter or underscore
+-   Contain only letters, numbers, dots (`.`), and underscores (`_`)
+-   Be a valid C# namespace identifier
 
 **Valid examples**:
-- `MyLibrary`
-- `MyCompany.Core`
-- `MyCompany.DataAccess.SqlServer`
-- `Utilities_2024`
-- `_InternalTools`
+
+-   `MyLibrary`
+-   `MyCompany.Core`
+-   `MyCompany.DataAccess.SqlServer`
+-   `Utilities_2024`
+-   `_InternalTools`
 
 **Invalid examples**:
-- `123Library` (starts with number)
-- `My-Library` (contains dash)
-- `My Library` (contains space)
-- `My@Library` (contains special character)
+
+-   `123Library` (starts with number)
+-   `My-Library` (contains dash)
+-   `My Library` (contains space)
+-   `My@Library` (contains special character)
 
 ### Post-Rename Tasks
 
 After running `rename-template.ps1`, remember to:
+
 1. Update `LICENSE` with your name and year
 2. Update `README.md` with your project description
 3. Update `Directory.Build.props` with your package metadata
@@ -216,6 +230,7 @@ After running `rename-template.ps1`, remember to:
 ### Troubleshooting
 
 **rename-template.ps1 fails on build**:
+
 ```powershell
 # Run without building, then build manually
 .\scripts\rename-template.ps1 -NewName "MyLib" -SkipBuild
@@ -224,14 +239,16 @@ dotnet test
 ```
 
 **install-mcps.ps1 reports Node.js not found**:
+
 ```powershell
 # Install Node.js from https://nodejs.org/
 # Restart PowerShell after installation
-node --version  # Should show v18+ 
+node --version  # Should show v18+
 npm --version   # Should show 8+
 ```
 
 **Permission errors**:
+
 ```powershell
 # Run PowerShell as Administrator, or
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
@@ -242,22 +259,26 @@ Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ## 🔍 Script Internals
 
 Both scripts:
-- Use `Set-StrictMode -Version Latest` for safety
-- Use `$ErrorActionPreference = 'Stop'` to fail fast
-- Include comprehensive error handling with try-catch blocks
-- Provide colored output for better readability
-- Support `-WhatIf` simulation (future enhancement)
+
+-   Use `Set-StrictMode -Version Latest` for safety
+-   Use `$ErrorActionPreference = 'Stop'` to fail fast
+-   Include comprehensive error handling with try-catch blocks
+-   Provide colored output for better readability
+-   Support `-WhatIf` simulation (future enhancement)
 
 Files modified by `rename-template.ps1`:
-- All `.cs` files (namespace updates)
-- All `.csproj` files (project names and references)
-- `.sln` file (solution name and project paths)
-- `README.md`, `CONTRIBUTING.md`, all docs
-- `.github\instructions\*.md`
-- `.vscode\*.json`
-- `Directory.Build.props`
+
+-   All `.cs` files (namespace updates)
+-   All `.csproj` files (project names and references)
+-   `.sln` file (solution name and project paths)
+-   `README.md`, `CONTRIBUTING.md`, all docs
+-   `.github\instructions\*.md`
+-   `.vscode\*.json`
+-   `Directory.Build.props`
 
 MCP servers installed by `install-mcps.ps1`:
-- Configured in `mcp.json`
-- Installed via `npx` (cached globally)
-- Can be verified with `npx -y <package> --version`
+
+-   Configured in `mcp.json`
+-   Installed via `npx` (cached globally)
+-   Can be verified with `npx -y <package> --version`
+

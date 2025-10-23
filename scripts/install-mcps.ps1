@@ -33,7 +33,7 @@ $ErrorActionPreference = 'Stop'
 # Check if Node.js and npx are available
 function Test-Prerequisites {
     Write-Host "Checking prerequisites..." -ForegroundColor Cyan
-    
+
     try {
         $nodeVersion = node --version 2>&1
         Write-Host "  [OK] Node.js: $nodeVersion" -ForegroundColor Green
@@ -42,7 +42,7 @@ function Test-Prerequisites {
         Write-Host "  [ERROR] Node.js is not installed. Please install Node.js from https://nodejs.org/" -ForegroundColor Red
         return $false
     }
-    
+
     try {
         $npxPath = Get-Command npx -ErrorAction Stop
         Write-Host "  [OK] npx: Found at $($npxPath.Source)" -ForegroundColor Green
@@ -51,19 +51,19 @@ function Test-Prerequisites {
         Write-Host "  [ERROR] npx is not available. Please ensure npm is properly installed." -ForegroundColor Red
         return $false
     }
-    
+
     return $true
 }
 
 # Read and parse mcp.json
 function Get-MCPServers {
     $mcpJsonPath = Join-Path $PSScriptRoot "..\mcp.json"
-    
+
     if (-not (Test-Path $mcpJsonPath)) {
         Write-Host "  [ERROR] mcp.json not found at: $mcpJsonPath" -ForegroundColor Red
         return $null
     }
-    
+
     try {
         $mcpConfig = Get-Content $mcpJsonPath -Raw | ConvertFrom-Json
         return $mcpConfig.mcpServers.psobject.Properties
@@ -77,7 +77,7 @@ function Get-MCPServers {
 # Check if a package is installed
 function Test-PackageInstalled {
     param([string]$PackageName)
-    
+
     try {
         $null = npx -y $PackageName --version 2>&1
         return $true
@@ -120,13 +120,13 @@ $skippedCount = 0
 foreach ($server in $mcpServers) {
     $serverName = $server.Name
     $serverConfig = $server.Value
-    
+
     # Extract npm package name from command
     if ($serverConfig.command -eq 'npx' -and $serverConfig.args.Count -gt 0) {
         $packageName = $serverConfig.args[0]
-        
+
         Write-Host "Processing: $serverName ($packageName)" -ForegroundColor White
-        
+
         if ($VerifyOnly) {
             # Only check if installed
             if (Test-PackageInstalled $packageName) {
@@ -140,13 +140,13 @@ foreach ($server in $mcpServers) {
         else {
             # Check and install if needed
             $isInstalled = Test-PackageInstalled $packageName
-            
+
             if ($isInstalled -and -not $Force) {
                 Write-Host "  [SKIP] Already installed" -ForegroundColor Gray
                 $skippedCount++
                 continue
             }
-            
+
             try {
                 Write-Host "  Installing $packageName..." -ForegroundColor Yellow
                 $null = npx -y $packageName --version 2>&1
@@ -157,7 +157,7 @@ foreach ($server in $mcpServers) {
                 Write-Host "  [FAILED] Could not install ${serverName}: $_" -ForegroundColor Red
             }
         }
-        
+
         Write-Host ""
     }
 }

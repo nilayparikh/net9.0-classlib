@@ -5,7 +5,7 @@
 .DESCRIPTION
     This script automates the process of customizing the .NET 9 class library template
     by renaming all occurrences of "YourLibrary" to your specified library name.
-    
+
     It performs the following operations:
     1. Validates the new library name
     2. Renames directories (src/YourLibrary, tests/YourLibrary.Tests)
@@ -41,7 +41,7 @@ param(
     [Parameter(Mandatory = $true)]
     [ValidateNotNullOrEmpty()]
     [string]$NewName,
-    
+
     [switch]$SkipBuild,
     [switch]$SkipGit
 )
@@ -52,11 +52,11 @@ $ErrorActionPreference = 'Stop'
 # Validate library name
 function Test-LibraryName {
     param([string]$Name)
-    
+
     if ($Name -match '^[a-zA-Z_][a-zA-Z0-9_.]*$') {
         return $true
     }
-    
+
     Write-Host "[ERROR] Invalid library name: $Name" -ForegroundColor Red
     Write-Host "Library name must:" -ForegroundColor Yellow
     Write-Host "  - Start with a letter or underscore" -ForegroundColor Yellow
